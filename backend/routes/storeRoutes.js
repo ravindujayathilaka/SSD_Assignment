@@ -15,11 +15,13 @@ const {
 
 const router = express.Router();
 
+const { isAdmin, isAuthenticated } = require("../middlewares/auth");
+
 router.get("/products", fetchAllProducts);
-router.post("/products", createProduct);
+router.post("/products",isAuthenticated, createProduct);
 router.get("/products/:category", fetchProductsByCategory);
-router.put("/products/:pid", updateProduct);
-router.delete("/products/:pid", deleteProduct);
+router.put("/products/:pid",isAdmin, updateProduct);
+router.delete("/products/:pid",isAdmin, deleteProduct);
 router.get("/product/:pid", getSingleItem);
 router.post("/orders", createOrder);
 router.get("/orders", getOrders);

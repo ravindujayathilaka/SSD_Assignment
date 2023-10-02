@@ -20,7 +20,7 @@ const Login = () => {
     };
 
     await axios
-      .post("http://localhost:8000/api/users/login", user, {
+      .post("http://localhost:8000/api/auth/login", user, {
         withCredentials: true,
       })
       .then((res) => {

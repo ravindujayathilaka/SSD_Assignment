@@ -6,18 +6,23 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const onRegister = async () => {
     const user = {
-      full_name: name,
+      name,
       email,
       password,
+      phone,
+      is_admin: false,
     };
+    
+    console.log(user);
 
     if (
-      user.full_name.length <= 0 ||
+      user.name.length <= 0 ||
       user.email.length <= 0 ||
       user.password.length <= 0
     ) {
@@ -29,11 +34,11 @@ const Register = () => {
 
     if (re.test(user.email)) {
       const { res, status } = await axios.post(
-        "http://localhost:8000/api/users/sign-up",
+        "http://localhost:8000/api/user",
         user
       );
 
-      if (status === 201) {
+      if (status === 200) {
         navigate("/login");
       }
     } else {
@@ -96,6 +101,21 @@ const Register = () => {
               <small id="emailHelp" className="form-text">
                 Your password will be encrypted automatically
               </small>
+            </div>
+            
+            <div className="mb-3">
+              <label for="exampleInputPhone1" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="phone"
+                className="form-control"
+                style={{ width: "600px" }}
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
             </div>
 
             <button
