@@ -12,6 +12,7 @@ const {
   getOrders,
   getPayments,
 } = require("../controllers/storeControllers");
+const { isAdmin, isAuthenticated } = require("../middlewares/auth");
 
 const router = express.Router();
 
