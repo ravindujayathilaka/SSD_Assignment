@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const registerUser = (req, res) => {
   let { full_name, email, password } = req.body;
 
+  //In here for the password encryption used the password hashing using SHA-256
   const hashPassword = (password) => {
     return crypto.createHash('sha256').update(password).digest('hex')
   }
@@ -31,7 +32,19 @@ const loginUser = (req, res) => {
     if (err) {
       res.status(401).json({ error: "Email or Password doesn't match" });
     } else {
-      if (req.body.password === doc.password) {
+
+      let password = req.body.password
+
+      const hashPassword = (password) => {
+        return crypto.createHash('sha256').update(password).digest('hex')
+      }
+      password = hashPassword('secret')
+
+      if (password === doc.password) {
+
+        console.log("Input password", password);
+        console.log("DB password", doc.password);
+        
         req.session.user = doc;
         res.status(200).json(doc);
       } else {
