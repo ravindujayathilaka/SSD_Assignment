@@ -35,6 +35,7 @@ const loginUser = (req, res) => {
 
       let password = req.body.password
 
+      //If the password is in the parameter it will be converted into a hash and compare the both hash of the input password and the password in the database. This way the users password will never reveal to the others.
       const hashPassword = (password) => {
         return crypto.createHash('sha256').update(password).digest('hex')
       }
@@ -42,9 +43,6 @@ const loginUser = (req, res) => {
 
       if (password === doc.password) {
 
-        console.log("Input password", password);
-        console.log("DB password", doc.password);
-        
         req.session.user = doc;
         res.status(200).json(doc);
       } else {
