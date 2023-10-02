@@ -1,7 +1,13 @@
 const AppUser = require("../models/UserModel");
+const crypto = require('crypto');
 
 const registerUser = (req, res) => {
   let { full_name, email, password } = req.body;
+
+  const hashPassword = (password) => {
+    return crypto.createHash('sha256').update(password).digest('hex')
+  }
+  password = hashPassword('secret')
 
   AppUser.create({ full_name, email, password }, (err, data) => {
     if (err) res.status(500).json({ error: err });
