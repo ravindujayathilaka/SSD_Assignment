@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
   const [password, setPassword] = useState();
@@ -47,7 +49,6 @@ const Login = () => {
             {error && (
               <p className="text-center text-danger form-text"> {error} </p>
             )}
-
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
                 Email address
@@ -82,7 +83,6 @@ const Login = () => {
                 }}
               />
             </div>
-
             <button
               type="button"
               className="btn btn-primary btn-block w-100 mt-4"
@@ -91,6 +91,44 @@ const Login = () => {
             >
               {!waiting ? "Login" : "Logging in"}
             </button>
+
+            <div className="row mt-4">
+              <div className="col-5">
+                <hr />
+              </div>
+              <div className="col-2 text-center">
+                <p>OR</p>
+              </div>
+              <div className="col-5">
+                <hr />
+              </div>
+            </div>
+
+            <div className="my-2 d-flex align-items-center justify-content-center">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  console.log(credentialResponse);
+
+                  await axios
+                    .post(
+                      "http://localhost:8000/api/auth/google-login",
+                      {
+                        accessToken: credentialResponse.credential,
+                      },
+                      {
+                        withCredentials: true,
+                      }
+                    )
+                    .then((res) => {
+                      console.log(res);
+                      navigate("/store/store-admin-products");
+                    });
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
           </form>
         </div>
         <div className="col text-center">

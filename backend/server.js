@@ -17,7 +17,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3002",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -38,9 +38,8 @@ const sessSettings = expressSession({
 
 app.use(sessSettings);
 const PORT = 8000;
-
 const DB_URL =
-  "mongodb+srv://00prabashwara123:RAvipraBa0104@cluster0.ieklcbk.mongodb.net/";
+  "mongodb+srv://admin:pOmyMB610WrahWEE@cluster0.g8kao.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 });

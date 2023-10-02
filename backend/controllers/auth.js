@@ -45,6 +45,40 @@ const loginUser = async (req, res) => {
     });
 };
 
+// login or regitser user with google
+const createOrLogin = async (req, res) => {
+  const decoded = jwt.decode(req.body.accessToken);
+
+  const { email, name, googleId } = decoded;
+  let userExist;
+  userExist = await user.findOne({
+    email,
+  });
+
+  if (!userExist) {
+    // creating user
+    const newUser = new user({
+      email,
+      name,
+      googleId,
+      method: "google",
+    });
+
+    userExist = await newUser.save();
+  }
+
+  const token = jwt.sign({ email: userExist.email }, process.env.TOKENKEY);
+
+  res
+    .cookie("token", token, {
+      httpOnly: false,
+    })
+    .json({
+      email: userExist.email,
+      name: userExist.name,
+      is_admin: userExist.is_admin,
+    });
+};
 /*
 method:GET
 route:/api/auth/logout
@@ -57,4 +91,4 @@ const logoutUser = async (req, res) => {
   });
 };
 
-module.exports = { loginUser, logoutUser };
+module.exports = { loginUser, logoutUser, createOrLogin };
