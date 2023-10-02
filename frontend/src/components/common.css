@@ -1,0 +1,51 @@
+#buttonserv {
+  border-radius: 30px;
+  background-color: #12af39;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 80px;
+  text-align: center;
+}
+
+#buttonserv span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#buttonserv span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#buttonserv:hover span {
+  padding-right: 25px;
+}
+
+#buttonserv:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.home-service-sjfjk {
+  background-image: url("https://i.ibb.co/w7MvZ9B/yulian-alexeyev-x-DLEUTWCZdc-unsplash.jpg");
+  background-repeat: no-repeat;
+  max-width: 100vw;
+  max-height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}

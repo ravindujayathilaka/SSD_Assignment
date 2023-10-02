@@ -1,0 +1,209 @@
+/*.product-title{   
+.product-title123{   
+border:0.5px solid rgba(150, 168, 156);
+margin-left: 2%;
+margin-top: 70px;
+color:white;
+border-Radius: 30px;
+box-Shadow: 10px 10px 5px rgb(199, 211, 203);
+width:450px;
+padding: 5px;
+}
+
+.inputdiv12{ 
+    width:400px;
+    color:black;
+    margin: 2px;
+    position:center;
+    padding: 5px 5px 5px;   
+}
+
+.inputdiv123{
+        border:1px;
+        width:400px;
+        height:50px;
+        border-Radius: 30px; 
+        float:center;
+        box-Shadow:10px 10px 5px rgba(150, 168, 156);
+        margin-Bottom:30px;
+}
+
+.pinput1{
+    font-Size: 20px;
+    text-Align:center;
+}
+
+.pinput2{
+    font-Size:20px;
+    text-Align:left;
+}
+
+.container11{
+        margin-Left: 15%;
+        color:white;
+        width:1100px;
+        padding: 40px 40px 10px 40px;
+}
+.form-horizontal11{
+    width:600px;
+    margin:10px;
+    padding: 50px 50px 20px 50px;
+    border-Radius:30px;
+    color:black;
+}
+
+.form-control11{
+     background-Color: white; 
+     
+     width:500px;
+     padding:15px;
+     margin-Top:15px;
+     border: none;
+     border-radius: 20px;
+     box-Shadow: 8px 3px 3px rgb(137, 142, 136);
+
+}
+
+.container11{
+    background: #ffffff;
+    float:left;
+    width: 680px;
+    height: 700px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container12{
+            box-Shadow: 10px 4px 4px rgb(199, 203, 195);
+            content: "";
+            display: table;
+            clear: both;
+}
+.button111{
+    margin-top: 10px;
+}
+*/
+
+
+
+/* Popup style */
+.popup-box111 {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+ 
+.boxCondition {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+}
+ 
+.close-icon111 {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #dbd4d4;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}
+
+
+  /*PriceCalculator css*/
+
+ 
+  
+  .appCal {
+    display: flex;
+    margin-top:50px;
+    margin-bottom:50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .containerCal11 {
+    box-shadow: 0px 0px 12px rgb(204, 204, 204);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .inputCal11 {
+    color: rgb(16, 17, 16);
+    width: 100%;
+    font-size: 1.2rem;
+    border-color: #000000;
+    padding: 3px 4px;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+  
+  .btnCal11 {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 7px 0;
+    padding: 7px 0;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-outlineCal11 {
+    background-color: #fff;
+    color: rgb(1, 1, 1);
+  }
+  
+  .centerCal11 {
+    text-align: center;
+    margin: 24px 0;
+  }
+  
+  .paraCal11 {
+    margin: 10px 0;
+  }
+  
+  .img-containerCal11 {
+    text-align: center;
+  }
+  
+  .img-containerCal11 img {
+    height: 150px;
+  }
+  
+  /*
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }*/

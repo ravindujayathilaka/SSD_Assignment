@@ -1,0 +1,228 @@
+.store-container {
+  background: #f5f5f5;
+}
+
+.store-carousel img {
+  width: 100%;
+}
+
+.ecommerce-slide {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.store-add-product {
+  background: #f5f5f5;
+}
+
+.product-details-img {
+  width: 100%;
+  height: 80%;
+  border-radius: 2px;
+}
+
+.product-card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+  width: 300px !important;
+  height: 450px !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+}
+
+.product-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+}
+
+#store-store-details-button {
+  border-radius: 20px !important;
+  width: 50%;
+  background-color: #12af39;
+  border: none;
+}
+
+.store-product-details-container {
+  padding: 40px 120px;
+}
+
+.store-admin-table-header > tr {
+  background-color: #12af39;
+  border-radius: 4px;
+  color: white;
+}
+
+.details-button-danger {
+  border-radius: 20px;
+  width: 50%;
+  background-color: red !important;
+  border: none;
+}
+
+.store-store-product-title {
+  padding: 0 20px;
+}
+
+.store-store-product-title > hr {
+  border-bottom: none;
+}
+
+#product-details-buy-now {
+  background-color: #12af39;
+  color: white;
+  font-weight: 400;
+}
+
+.store-form-outer-layer {
+  width: 650px;
+  background: rgb(255, 255, 255);
+  z-index: 1;
+  padding: 40px;
+  height: 89%;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+  box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+}
+
+.latest-store-details-cover {
+  position: relative;
+}
+
+.latest-store-details-cover > div > p {
+  color: rgb(73, 73, 73);
+  font-weight: 600;
+}
+
+.store-bought-product {
+  width: 450px;
+  background: rgb(255, 255, 255);
+  z-index: 1;
+  padding: 20px;
+  min-height: 180px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+  box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+}
+
+.store-bought-product-item > img {
+  width: 150px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.store-bought-product-item p {
+  margin: 0;
+}
+
+.store-order-form-button {
+  width: 100%;
+  background: rgb(18, 175, 57);
+  height: 40px;
+  color: white;
+}
+
+.pricing-labels-store p {
+  margin: 0;
+}
+
+.store-order-product-item {
+  background: rgb(255, 255, 255);
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: rgb(18, 175, 57) !important;
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Payments */
+.store-payment-form {
+  width: 500px;
+  min-height: 200px;
+  background: rgb(255, 255, 255);
+  z-index: 1;
+  padding: 20px;
+  min-height: 180px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+  box-shadow: 0px 0px 10px 1px rgb(226, 226, 226);
+}
+
+.store-payment-paypal {
+  width: 100%;
+}
+
+.store-payment-paypal > img {
+  width: 100%;
+  height: 50px;
+  object-fit: contain;
+}
+
+.store-orders-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.store-orders-container table {
+  overflow: hidden;
+}
+
+.store-admin-edit-form {
+  background: #fff;
+  border-radius: 8px;
+  width: 650px;
+}
+
+#app-store-admin-table-header-44512135 tr {
+  background-color: unset;
+  color: unset;
+}
+
+#app-store-admin-table-header-44512135 tr {
+  background-color: unset;
+  padding: 0 !important;
+}
+
+#store-orders-container {
+  padding: 0 !important;
+}
+
+#app-store-admin-table-header-44512135 thead {
+  background: rgb(18, 175, 57);
+  color: white;
+}
+
+#store-admin-admin456412123 > table.table tr th,
+#store-admin-admin456412123 > table.table tr th {
+  padding: 15px !important;
+}
+
+#store-admin-admin456412123 > table.table td {
+  padding: 15px !important;
+}
+
+#app-store-admin-table-header-44512135 tr:hover {
+  transition: unset;
+  transform: unset;
+}
+
+.store-add-product-form-inner .form-group {
+  display: block !important;
+  margin-top: 10px !important;
+}
+
+.store-swal-button button {
+  background-color: #12af39;
+}

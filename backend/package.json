@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Nodejs backend for itp agricultural system",
+  "main": "server.js",
+  "scripts": {
+    "backend": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"cd ../frontend && npm start\""
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.23",
+    "mongoose": "^6.2.7",
+    "pino": "^7.8.0",
+    "react-reveal": "^1.2.2",
+    "sweetalert2": "^11.4.14"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
