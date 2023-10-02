@@ -25,6 +25,29 @@ const fetchProductsByCategory = (req, res) => {
 };
 
 const createProduct = (req, res) => {
+  console.log(req.body);
+
+  if((req.body.name).includes('<script>') || (req.body.name).includes('</script>')){
+    req.body.name = ((req.body.name).replace("<script>", ""))
+    req.body.name = ((req.body.name).replace("</script>", ""))
+  }
+  if((req.body.category).includes('<script>') || (req.body.category).includes('</script>')){
+    req.body.category = ((req.body.category).replace("<script>", ""))
+    req.body.category = ((req.body.category).replace("</script>", ""))
+  }
+  if((req.body.price).includes('<script>') || (req.body.price).includes('</script>')){
+    req.body.price = ((req.body.price).replace("<script>", ""))
+    req.body.price = ((req.body.price).replace("</script>", ""))
+  }
+  if((req.body.smallDes).includes('<script>') || (req.body.smallDes).includes('</script>')){
+    req.body.smallDes = ((req.body.smallDes).replace("<script>", ""))
+    req.body.smallDes = ((req.body.smallDes).replace("</script>", ""))
+  }
+  if((req.body.longDes).includes('<script>') || (req.body.longDes).includes('</script>')){
+    req.body.longDes = ((req.body.longDes).replace("<script>", ""))
+    req.body.longDes = ((req.body.longDes).replace("</script>", ""))
+  }
+
   Product.create(req.body, (err, data) => {
     if (err) res.status(500).json({ error: err });
     res.status(201).json(data);
