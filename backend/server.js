@@ -14,6 +14,7 @@ const wholesaleRoutes = require("./routes/wholesaleRoutes");
 const CompanyRequest = require("./routes/Pr_companyRoutes");
 
 const app = express();
+require("dotenv").config();
 app.use(cookieParser());
 app.use(
   cors({
@@ -37,10 +38,9 @@ const sessSettings = expressSession({
 });
 
 app.use(sessSettings);
-const PORT = 8000;
-const DB_URL =
-  "mongodb+srv://admin:pOmyMB610WrahWEE@cluster0.g8kao.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(DB_URL, {
+const PORT = process.env.PORT || 8000;
+
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
 });
 
