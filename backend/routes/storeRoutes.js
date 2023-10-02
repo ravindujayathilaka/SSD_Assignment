@@ -12,14 +12,15 @@ const {
   getOrders,
   getPayments,
 } = require("../controllers/storeControllers");
+const { isAdmin, isAuthenticated } = require("../middlewares/auth");
 
 const router = express.Router();
 
 router.get("/products", fetchAllProducts);
-router.post("/products", createProduct);
-router.get("/products/:category", fetchProductsByCategory);
-router.put("/products/:pid", updateProduct);
-router.delete("/products/:pid", deleteProduct);
+router.post("/products", isAdmin,createProduct);
+router.get("/products/:category", isAdmin,fetchProductsByCategory);
+router.put("/products/:pid", isAdmin,updateProduct);
+router.delete("/products/:pid",isAdmin, deleteProduct);
 router.get("/product/:pid", getSingleItem);
 router.post("/orders", createOrder);
 router.get("/orders", getOrders);
