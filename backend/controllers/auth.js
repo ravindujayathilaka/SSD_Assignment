@@ -1,5 +1,5 @@
 // importing the modules
-const user = require("../models/UserModel");
+const user = require("../models/user");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 require("dotenv").config();

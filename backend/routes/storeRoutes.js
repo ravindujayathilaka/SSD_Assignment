@@ -16,10 +16,12 @@ const { isAdmin, isAuthenticated } = require("../middlewares/auth");
 
 const router = express.Router();
 
+const { isAdmin, isAuthenticated } = require("../middlewares/auth");
+
 router.get("/products", fetchAllProducts);
-router.post("/products", isAdmin,createProduct);
-router.get("/products/:category", isAdmin,fetchProductsByCategory);
-router.put("/products/:pid", isAdmin,updateProduct);
+router.post("/products",isAuthenticated, createProduct);
+router.get("/products/:category", fetchProductsByCategory);
+router.put("/products/:pid",isAdmin, updateProduct);
 router.delete("/products/:pid",isAdmin, deleteProduct);
 router.get("/product/:pid", getSingleItem);
 router.post("/orders", createOrder);

@@ -37,7 +37,7 @@ const StoreAddProductForm = () => {
     }
 
     axios
-      .post("http://localhost:8000/api/store/products", product)
+      .post("http://localhost:8000/api/store/products", product,{withCredentials: true})
       .then((response) => {
         swal({
           title: "Product Added Successfully!",

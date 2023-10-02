@@ -1,32 +1,33 @@
-const user = require("../models/UserModel");
+const user = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 const isAuthenticated = async (req, res, next) => {
-  const { token } = req.cookies;
+const { token } = req.cookies;
 
-  if (!token) return res.json({ msg: "User is not authenticated" });
+if (!token) return res.json({ msg: "User is not authenticated" });
 
-  next();
+next();
 };
 
 const isAdmin = async (req, res, next) => {
-  const { token } = req.cookies;
 
-  if (!token) return res.json({ msg: "user is not authenticated" });
+const { token } = req.cookies;
 
-  try {
+if (!token) return res.json({ msg: "user is not authenticated" });
+
+try {
     var decoded = jwt.verify(token, process.env.TOKENKEY);
-  } catch {
+} catch {
     return res.json({ msg: "Invalid Token" });
-  }
+}
 
-  const User = await user.findOne({ email: decoded.email });
+const User = await user.findOne({ email: decoded.email });
 
-  if (!User) return res.json({ msg: "User Does not Exist" });
+if (!User) return res.json({ msg: "User Does not Exist" });
 
-  if (!User.is_admin) return res.json({ msg: "User is not admin" });
+if (!User.is_admin) return res.json({ msg: "User is not admin" });
 
-  next();
+next();
 };
 
 module.exports = { isAdmin, isAuthenticated };
