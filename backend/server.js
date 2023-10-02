@@ -14,10 +14,11 @@ const wholesaleRoutes = require("./routes/wholesaleRoutes");
 const CompanyRequest = require("./routes/Pr_companyRoutes");
 
 const app = express();
+require("dotenv").config();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -37,11 +38,9 @@ const sessSettings = expressSession({
 });
 
 app.use(sessSettings);
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
-const DB_URL =
-  "mongodb+srv://00prabashwara123:RAvipraBa0104@cluster0.ieklcbk.mongodb.net/";
-mongoose.connect(DB_URL, {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
 });
 
