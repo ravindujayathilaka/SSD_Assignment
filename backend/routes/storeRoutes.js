@@ -16,8 +16,6 @@ const { isAdmin, isAuthenticated } = require("../middlewares/auth");
 
 const router = express.Router();
 
-const { isAdmin, isAuthenticated } = require("../middlewares/auth");
-
 router.get("/products", fetchAllProducts);
 router.post("/products",isAuthenticated, createProduct);
 router.get("/products/:category", fetchProductsByCategory);
