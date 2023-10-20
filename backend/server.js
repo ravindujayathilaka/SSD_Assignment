@@ -39,10 +39,13 @@ const sessSettings = expressSession({
 
 app.use(sessSettings);
 const PORT = process.env.PORT || 8000;
-
-mongoose.connect(process.env.DB_URL, {
+console.log("Checking",process.env.DB_URL);
+mongoose.connect(process.env.DB_URL, 
+  {
   useNewUrlParser: true,
-});
+
+}
+);
 
 const connection = mongoose.connection;
 connection.once("open", () => {

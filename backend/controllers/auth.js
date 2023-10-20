@@ -14,17 +14,20 @@ const loginUser = async (req, res) => {
 
   // verification
   if (!email || !password)
-    return res.json({ msg: "please enter all the credentials" });
+  //Added Bad Request response Status 
+    return res.status(400).json({ msg: "please enter all the credentials" });
 
   // does user exist
   const userExist = await user.findOne({ email });
   if (!userExist)
-    return res.json({ msg: "user does not exist. please sign up" });
+  //Added Request is not available Status 
+    return res.status(404).json({ msg: "user does not exist. please sign up" });
 
   // password validation
   if (
+    //Added Unauthorized response Status 
     userExist.encry_password !=
-    crypto.createHmac("sha256", userExist.salt).update(password).digest("hex")
+    crypto.createHmac.status(401)("sha256", userExist.salt).update(password).digest("hex")
   )
     return res.json({ msg: "invalid password" });
 
