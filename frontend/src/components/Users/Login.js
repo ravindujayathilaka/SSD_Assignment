@@ -1,20 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
+import useGlobalState from "../../state";
+
+const publicIp = require("react-public-ip");
 
 const Login = () => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [error, setError] = useState(null);
   const [waiting, setWaiting] = useState(false);
+  const [ip] = useGlobalState("ip");
+  const [country] = useGlobalState("country");
 
   const navigate = useNavigate();
 
   const onLogin = async (e) => {
-    setWaiting(!waiting);
     e.preventDefault();
+
+    setWaiting(!waiting);
 
     const user = {
       email,
@@ -83,6 +88,7 @@ const Login = () => {
                 }}
               />
             </div>
+
             <button
               type="button"
               className="btn btn-primary btn-block w-100 mt-4"
@@ -106,21 +112,19 @@ const Login = () => {
 
             <div className="my-2 d-flex align-items-center justify-content-center">
               <GoogleLogin
-                onSuccess={async (credentialResponse) => {
-                  console.log(credentialResponse);
-
+                onSuccess={async (cred) => {
                   await axios
                     .post(
                       "http://localhost:8000/api/auth/google-login",
                       {
-                        accessToken: credentialResponse.credential,
+                        accessToken: cred.credential,
+                        ip,
                       },
                       {
                         withCredentials: true,
                       }
                     )
                     .then((res) => {
-                      console.log(res);
                       navigate("/store/store-admin-products");
                     });
                 }}

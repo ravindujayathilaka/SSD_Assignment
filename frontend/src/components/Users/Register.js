@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -9,17 +10,23 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [captcha, setCaptcha] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const onRegister = async () => {
+    if (!captcha) {
+      alert("Please verify that you are not a robot!");
+      return;
+    }
+
     const user = {
       name,
       email,
       password,
       phone,
       is_admin: false,
+      captcha: captchaValue,
     };
-    
-    console.log(user);
 
     if (
       user.name.length <= 0 ||
@@ -44,6 +51,11 @@ const Register = () => {
     } else {
       setError("Please enter a valid email");
     }
+  };
+
+  const onChange = (e) => {
+    setCaptchaValue(e);
+    setCaptcha(true);
   };
 
   return (
@@ -102,7 +114,7 @@ const Register = () => {
                 Your password will be encrypted automatically
               </small>
             </div>
-            
+
             <div className="mb-3">
               <label for="exampleInputPhone1" className="form-label">
                 Phone Number
@@ -117,6 +129,12 @@ const Register = () => {
                 }}
               />
             </div>
+
+            <ReCAPTCHA
+              sitekey="6LdLhW4oAAAAANPKYIiuKQxgWfWvCXr1vRdLeZr9"
+              onChange={onChange}
+              onSuc
+            />
 
             <button
               type="button"

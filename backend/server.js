@@ -12,6 +12,8 @@ const userRoutes = require("./routes/userManageRoutes");
 const storeRoutes = require("./routes/storeRoutes");
 const wholesaleRoutes = require("./routes/wholesaleRoutes");
 const CompanyRequest = require("./routes/Pr_companyRoutes");
+const { customRedisRateLimiter } = require("./middlewares/rate-limit");
+const { processGeoIp } = require("./middlewares/geo-ip");
 
 const app = express();
 require("dotenv").config();
@@ -49,6 +51,9 @@ connection.once("open", () => {
   logger.info(" Mongodb connected successfully");
 });
 
+app.use(customRedisRateLimiter);
+app.use(processGeoIp);
+
 app.get("/", (req, res) => {
   res.status(200).json({ messsage: "Server is running!" });
 });
@@ -63,6 +68,10 @@ app.use("/api/RegisterEvent", require("./routes/RegistereventRoutes"));
 
 app.use("/api/wholesale", wholesaleRoutes);
 app.use("/api/companyRequest", CompanyRequest);
+
+app.get("/test", (req, res) => {
+  res.status(200).json({ message: "Test route is working" });
+});
 
 app.listen(PORT, () => {
   logger.info(`Server is running on PORT: ${PORT}`);

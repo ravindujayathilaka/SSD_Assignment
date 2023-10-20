@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const user = require("../models/user");
 const crypto = require("crypto");
 const { v4: uuidv4 } = require("uuid");
+const axios = require("axios");
 require("dotenv").config();
 
 /*
@@ -11,7 +12,25 @@ route : /api/user/
 description: to create a user
 */
 const createUser = async (req, res) => {
-  const { name, email, password, is_admin, phone } = req.body;
+  const { name, email, password, is_admin, phone, captcha } = req.body;
+
+  // verify the captcha
+  if (!captcha) {
+    return res.status(400).json({ error: "Please select captcha" });
+  } else {
+    try {
+      const res = await axios.post(
+        "https://www.google.com/recaptcha/api/siteverify",
+        {
+          secret: process.env.CAPTCHA_SECRET,
+          response: captcha,
+        }
+      );
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({ error: "Captcha verification failed" });
+    }
+  }
 
   // validation
   if (!name || !email || !password || !phone)

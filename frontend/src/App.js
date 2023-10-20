@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import useGeoLocation from "react-ipgeolocation";
 
 //import "./App.css";
 //import "./components/educationComponents/Educationstyle.css"
@@ -11,7 +12,6 @@ import "./App.css";
 import Navigator from "./components/Navigator/Navigator";
 import Footer from "./components/Footer";
 //import Courseadmin from "./components/educationComponents/Courseadmin";
-
 
 // Store Components
 import StoreHome from "./components/Store/StoreHome";
@@ -33,16 +33,11 @@ import PriceCalculator from "./components/Product/User_Company/PriceCalculator";
 
 // Ads Components
 
-
 /*CareerManagement*/
-
-
 
 // Appointments Components - Healthcare
 
-
 // // Lab Components
-
 
 //Lab components
 
@@ -59,16 +54,40 @@ import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
 import StoreAdminProducts from "./components/Store/StoreAdminProducts";
 import StoreAdminOrders from "./components/Store/StoreAdminOrders";
 import StoreAdminPayments from "./components/Store/StoreAdminPayments";
+import { createGlobalState } from "react-hooks-global-state";
+import useGlobalState from "./state";
+import axios from "axios";
 
 function App() {
   useEffect(() => {}, []);
+
+  const location = useGeoLocation();
+
+  const [, setIp] = useGlobalState("ip");
+  const [, setCountry] = useGlobalState("country");
+
+  useEffect(() => {
+    setIp(location.ip);
+    setCountry(location.country);
+    console.log(location.ip, location.country);
+
+    axios.defaults.headers.common["ip"] = location.ip;
+    axios.defaults.headers.common["country"] = location.country;
+  }, [location.ip, location.country, setIp, setCountry]);
+
+  if (location.country !== "LK") {
+    return (
+      <div>
+        <h1>Sorry, this site is not available in your country</h1>
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>
       <Navigator />
       <Routes>
-              
-          {/* Health Care Appointments Routes */}
+        {/* Health Care Appointments Routes */}
 
         {/* Store Routes */}
         <Route path="/store" element={<StoreHome />} />
@@ -105,7 +124,7 @@ function App() {
           path="/store/store-admin-products/edit/:pid"
           element={<StoreAdminProductsEdit />}
         />
-       
+
         {/*Product Routes*/}
         <Route path="/productadd" element={<AddProduct />} />
         <Route path="/productSee" element={<AllProducts />} />
