@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
   if (
     //Added Unauthorized response Status 
     userExist.encry_password !=
-    crypto.createHmac.status(401)("sha256", userExist.salt).update(password).digest("hex")
+    crypto.createHmac("sha256", userExist.salt).update(password).digest("hex")
   )
     return res.json({ msg: "invalid password" });
 
